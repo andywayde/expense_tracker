@@ -10,3 +10,6 @@ class Expense(models.Model):
 
     def __str__(self):
         return f"On {self.date} we've spent {self.money_spent} GEL"
+
+    class Meta:
+        ordering = ["date"]
