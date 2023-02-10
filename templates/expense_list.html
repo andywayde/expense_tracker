@@ -1,0 +1,21 @@
+<h1>Expense List</h1>
+
+<p><a href="{% url 'expense_add' %}">Add</a></p>
+
+<table border="1" cellspacing="5">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for expense in expenses %}
+        <tr>
+            <td><a href="{% url 'expense_detail' expense.pk %}">{{ expense.date }}</a></td>
+            <td>{{ expense.money_spent }} GEL</td>
+        </tr>
+    {% endfor %}
+    <p>Total spent: {{ total_money_spent|floatformat:2 }} GEL</p>
+    </tbody>
+</table>  
