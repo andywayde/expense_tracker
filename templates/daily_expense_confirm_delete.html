@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Confirm Deletion</h1>
+    <p>Are you sure you want to delete the following daily expense?</p>
+    <table class="table table-bordered">
+      <tr>
+        <th>Date</th>
+        <td>{{ expense.date }}</td>
+      </tr>
+      <tr>
+        <th>Category</th>
+        <td>{{ expense.category.name }}</td>
+      </tr>
+      <tr>
+        <th>Sum</th>
+        <td>{{ expense.amount }}</td>
+      </tr>
+    </table>
+    <form action="{% url 'daily_expense_delete' expense.pk %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Delete" class="btn btn-danger">
+      <a href="{% url 'daily_expense_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

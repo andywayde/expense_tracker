@@ -1,16 +1,52 @@
 from django.urls import path
 from .views import (
-    ExpenseListView,
-    ExpenseDetailView,
-    ExpenseCreateView,
-    ExpenseUpdateView,
-    ExpenseDeleteView,
+    ExpenseCategoryListView,
+    ExpenseCategoryCreateView,
+    ExpenseCategoryUpdateView,
+    ExpenseCategoryDeleteView,
+)
+from .views import (
+    DailyExpenseListView,
+    DailyExpenseCreateView,
+    DailyExpenseUpdateView,
+    DailyExpenseDeleteView,
 )
 
 urlpatterns = [
-    path("expenses/", ExpenseListView.as_view(), name="expense_list"),
-    path("expenses/<int:pk>/", ExpenseDetailView.as_view(), name="expense_detail"),
-    path("expense/add/", ExpenseCreateView.as_view(), name="expense_add"),
-    path("expence/<int:pk>/edit", ExpenseUpdateView.as_view(), name="expense_update"),
-    path("expense/<int:pk>/delete", ExpenseDeleteView.as_view(), name="expense_delete"),
+    path(
+        "expense_categories/",
+        ExpenseCategoryListView.as_view(),
+        name="expense_category_list",
+    ),
+    path(
+        "expense_categories/create/",
+        ExpenseCategoryCreateView.as_view(),
+        name="expense_category_create",
+    ),
+    path(
+        "expense_categories/<int:pk>/update/",
+        ExpenseCategoryUpdateView.as_view(),
+        name="expense_category_update",
+    ),
+    path(
+        "expense_categories/<int:pk>/delete/",
+        ExpenseCategoryDeleteView.as_view(),
+        name="expense_category_delete",
+    ),
+    path("daily_expenses/", DailyExpenseListView.as_view(), name="daily_expense_list"),
+    path(
+        "daily_expenses/create/",
+        DailyExpenseCreateView.as_view(),
+        name="daily_expense_create",
+    ),
+    path(
+        "daily_expenses/<int:pk>/update/",
+        DailyExpenseUpdateView.as_view(),
+        name="daily_expense_update",
+    ),
+    path(
+        "daily_expenses/<int:pk>/delete/",
+        DailyExpenseDeleteView.as_view(),
+        name="daily_expense_delete",
+    ),
 ]

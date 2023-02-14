@@ -1,11 +1,17 @@
 from django import forms
-from .models import Expense
+from .models import ExpenseCategory, DailyExpense
 
 
-class ExpenseForm(forms.ModelForm):
+class ExpenseCategoryForm(forms.ModelForm):
     class Meta:
-        model = Expense
-        fields = ["money_spent", "date"]
+        model = ExpenseCategory
+        fields = ["name", "description"]
+
+
+class DailyExpenseForm(forms.ModelForm):
+    class Meta:
+        model = DailyExpense
+        fields = ["date", "category", "description", "amount"]
         widgets = {
-            "date": forms.SelectDateWidget(),
+            "date": forms.DateInput(attrs={"type": "date"}),
         }
